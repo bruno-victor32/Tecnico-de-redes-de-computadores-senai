@@ -1,0 +1,25 @@
+Duvidas
+
+Na UC6 - SA1 - Atividade 3 - Configuração de switch 2
+
+TISW-ACME-BRUNO(config)# line console 0
+TISW-ACME-BRUNO(config-line)# password  class
+TISW-ACME-BRUNO(config-line)# login
+TISW-ACME-BRUNO(config-line)# exit
+TISW-ACME-BRUNO(config)# line vty 0 4
+TISW-ACME-BRUNO(config-line)# password class
+TISW-ACME-BRUNO(config-line)# login
+TISW-ACME-BRUNO(config-line)# exit
+
+service password-encryption
+enable secret class
+
+Não teria que colocar da maneira de cima, colocar senha 
+nas linhas de console e telnet?
+
+=======================================================
+Porque a chave de criptografia o senhor usou 2048 
+No livro o recomendado seria 1024
+
+------------------------------------------------------
+Professor o Dhcp não teria que pegar somente quando tivesse um servidor

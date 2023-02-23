@@ -1,0 +1,5 @@
+configure terminal
+crypto key zeroize rsa
+yes
+end
+wr

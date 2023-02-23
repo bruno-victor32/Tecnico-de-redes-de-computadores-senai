@@ -1,0 +1,22 @@
+Switch> enable	
+Switch# configure terminal
+TISW-ACME-BRUNO(config)# banner motd @
+##############################
+######## TISW-ACME !!!!!!! #######
+Access Denied! Only Depto. TI !!!!!
+############################## @
+Switch(config)# hostname TISW-ACME-BRUNO
+TISW-ACME-BRUNO(config)# line console 0
+TISW-ACME-BRUNO(config-line)# password  class
+TISW-ACME-BRUNO(config-line)# login
+TISW-ACME-BRUNO(config-line)# exit
+TISW-ACME-BRUNO(config)# line vty 0 4
+TISW-ACME-BRUNO(config-line)# password class
+TISW-ACME-BRUNO(config-line)# login
+TISW-ACME-BRUNO(config-line)# exit
+TISW-ACME-BRUNO(config)# service password-encryption 
+TISW-ACME-BRUNO(config)# enable secret class
+TISW-ACME-BRUNO(config)# ip domain-name sala213.net
+TISW-ACME-BRUNO(config)# crypto key generate rsa
+How many bits in the modulus [512]:2048
+TISW-ACME-BRUNO(config)#ip ssh version 2

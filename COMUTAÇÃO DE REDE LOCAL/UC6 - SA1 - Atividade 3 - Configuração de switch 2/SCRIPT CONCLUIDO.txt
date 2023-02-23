@@ -1,0 +1,78 @@
+Roteador
+
+Router>enable
+Router#configure terminal
+Router(config)#hostname TIRT-ACME
+TIRT-ACME(config)#service password-encryption
+TIRT-ACME(config)#enable secret class
+TIRT-ACME(config)#banner motd @
+###############################################
+############ TIRT-ACME!! ######################
+Access Denied! Only Depto. TI !
+############################################### @
+
+TIRT-ACME(config)#ip domain-name sala213.net
+TIRT-ACME(config)#crypto key generate rsa
+How many bits in the modulus [512]: 2048
+TIRT-ACME(config)#ip ssh version 2
+TIRT-ACME(config)#ip ssh time-out 60
+TIRT-ACME(config)#ip ssh authentication-retries 2
+TIRT-ACME(config)#username yoda privilege 15 secret c3po
+TIRT-ACME(config)#username luke privilege 1 secret r2d2
+TIRT-ACME(config)#line vty 0 15
+TIRT-ACME(config-line)#login local
+TIRT-ACME(config-line)#transport input ssh
+TIRT-ACME(config-line)#exit
+TIRT-ACME(config)#line con 0
+TIRT-ACME(config-line)#login local
+TIRT-ACME(config-line)#exit
+TIRT-ACME(config)#line aux 0
+TIRT-ACME(config-line)#login local
+TIRT-ACME(config-line)#ip dhcp excluded-address 10.0.0.1 10.0.0.2
+TIRT-ACME(config)#ip dhcp pool UC6-SA1_ATIV3
+TIRT-ACME(dhcp-config)#network 10.0.0.0 255.255.255.0
+TIRT-ACME(dhcp-config)#default-router 10.0.0.1
+TIRT-ACME(dhcp-config)#interface Fastethernet 0/1
+TIRT-ACME(config-if)#ip address 10.0.0.1 255.255.255.0
+TIRT-ACME(config-if)#no shutdown
+TIRT-ACME(config)#end
+TIRT-ACME#wr
+TIRT-ACME#
+
+-------------------------------------------------------------------------------------
+Switch
+
+Switch>enable
+Switch#configure terminal
+Switch(config)#hostname TISW-ACME
+TISW-ACME(config)#service password-encryption
+TISW-ACME(config)#enable secret class
+TISW-ACME(config)#banner motd @
+Enter TEXT message.  End with the character '@'.
+###############################################
+############### TISW-ACME!!!!!!################
+Access Denied! Only Depto. TI!!!!!!
+###############################################@
+
+TISW-ACME(config)#ip domain-name sala2013.net
+TISW-ACME(config)#crypto key generate rsa
+How many bits in the modulus [512]: 2048
+TISW-ACME(config)#ip ssh version 2
+TISW-ACME(config)#ip ssh time-out 60
+TISW-ACME(config)#ip ssh authentication-retries 2
+TISW-ACME(config)#username yoda privilege 15 secret c3po
+TISW-ACME(config)#username luke privilege 1 secret r2d2
+TISW-ACME(config)#line vty 0 15
+TISW-ACME(config-line)#login local
+TISW-ACME(config-line)#transport input ssh
+TISW-ACME(config-line)#exit
+TISW-ACME(config)#line con 0
+TISW-ACME(config-line)#login local
+TISW-ACME(config-line)#exit
+TISW-ACME(config)#interface vlan 1
+TISW-ACME(config-if)#ip address 10.0.0.2 255.255.255.0
+TISW-ACME(config-if)#no shutdown
+TISW-ACME(config-if)#ip default-gateway 10.0.0.1
+TISW-ACME(config)#end
+TISW-ACME#wr
+TISW-ACME#

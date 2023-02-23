@@ -1,0 +1,80 @@
+ROUTER R1
+========================
+
+configure terminal
+hostname R1-Fontes
+service password-encryption
+enable secret class
+banner motd @
+================================
+Access Denied! Only JEDI´s !!!
+================================@
+
+line vty 0 15
+password cisco
+login
+
+line aux 0
+password cisco
+login
+
+line con 0
+password cisco
+login
+
+interface Fa0/0
+ip address 192.168.10.67 255.255.255.192
+no shutdown
+
+interface Se0/3/0
+ip address 192.168.10.221 255.255.255.252
+no shutdown
+
+router rip
+version 2
+network 192.168.10.64
+network 192.168.10.220
+
+end
+wr
+
+ROUTER R2
+========================
+
+configure terminal
+hostname R2-Fontes
+service password-encryption
+enable secret class
+banner motd @
+================================
+Access Denied! Only JEDI´s !!!
+================================@
+
+line vty 0 15
+password cisco
+login
+
+line aux 0
+password cisco
+login
+
+line con 0
+password cisco
+login
+
+interface Fa0/0
+ip address 192.168.10.35 255.255.255.224
+no shutdown
+
+interface Se0/0/1
+ip address 192.168.10.222 255.255.255.252
+clock rate 64000
+no shutdown
+
+router rip
+version 2
+network 192.168.10.32
+network 192.168.10.220
+
+end
+wr

@@ -1,0 +1,27 @@
+Ip padrão (Rede): 192.168.0.0/24
+Não pode colocar o ip 192.168.0.0 porque e da rede
+Ip do servidor:      192.168.0.1
+Mascara do servidor: 255.255.255.0 que e equivalente a /24
+Gateway e DNS não precisa configurar porque e o proprio servidor
+
+Na aba Services ir em DHCP 
+Habilitar o DHCP "on"
+Default gateway 192.168.0.1  	"ip do proprio servidor" 
+DNS Server 192.168.0.1		"ip do proprio servidor" 
+
+Os ips dos Desktops vão de 192.168.0.0 até 192.168.0.255
+Obs: 192.168.0.0 não pode ser utilizado por ninguem porque e ip da rede
+     192.168.0.1 já e o ip do servidor DHCP
+     192.168.0.2 será o ip que iremos iniciar para disponibilizar para os desktops
+     192.168.0.255 não pode ser usado porque e o ip de broadcast
+No total um ip de classe C permite 256 ip, mas no caso só será possivel usar 
+253 ips para distribuir nos desktops nessa rede
+
+Start IP Address 192.168.0.2
+Subnet Mask 255.255.255.0
+No "Maximum Number of Users" colocar 253 ips
+
+Posso ter varios pc com mesmo ip,mas não ao mesmo tempo
+Si o pc do meu irmão estiver conectado ao roteador/ wifi e pegou o ip com final 3 e em 
+seguida ele desligou o pc.Quando eu conectar meu pc ele vai pegar o ip com final 3.Agora si meu
+irmão ligar novamente o pc e se conectar ele vai receber outro ip 

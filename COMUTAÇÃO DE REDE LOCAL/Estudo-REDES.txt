@@ -1,0 +1,41 @@
+Switch>enable		   		->Comando que muda o prompt do modo "Exec Usuário" para o modo "Exec Privilegiado"
+Switch#configure terminal  		->Comando que permite acessar o modo de "Configuração Global"
+Switch# 	   	   		-> "#" Indica que está no modo de acesso "Exec Privilegiado"
+Switch>		   	   		-> ">" Indica que está no modo de acesso "Exec Usuário"
+Switch(config)#            		      -> Indica que está no modo de "Configuração Global"
+Switch(config)#hostname TISW-ACME             ->Configurando o nome do Switch, permite identificar a finalidade do dispositivo
+TISW-ACME-BRUNO(config)# line console 0	      -> Adicionando senha na linha de console que é utilizada para fazer a configuração inicial 
+						   no equipamento, por meio do emulador de terminal.Vou colocar uma senha antes de permitir 
+						   acessar no "Switch>"
+TISW-ACME-BRUNO(config-line)#password  class  -> O comando "password" define a senha que nesse caso e "class"
+TISW-ACME-BRUNO(config-line)#login	      -> O comando "login" faz com que seja exigido o login, ou sejá, seja necessario colocar a senha
+TISW-ACME-BRUNO(config)#line vty 0 4	      -> Adicionando senha na linha VTY que é utilizada para realizar o acesso remoto através de telnet e SSH
+TISW-ACME-BRUNO(config-line)#password class
+TISW-ACME-BRUNO(config-line)#login
+banner motd @ Access Denied! Only Depto. TI @	->Configurando uma mensagem, a qual é apresentada antes de ser realizado o acesso ao Switch
+TISW-ACME-BRUNO(config)#service password-encryption   ->Criptografando a senha das linhas de console e telnet
+TISW-ACME-BRUNO(config)#enable secret class   ->Adicionando uma senha criptografada que autorize o acesso ao modo "Exec Privilegiado", ou seja, acesse o Switch# 
+TISW-ACME-BRUNO(config)#ip domain-name sala213.net ->Configurando o nome de domínio
+TISW-ACME-BRUNO(config)# crypto key generate rsa   ->Gerando uma chave de criptografia rsa
+How many bits in the modulus [512]:2048            -> Tamanho da chave de criptografia
+TISW-ACME-BRUNO(config)#ip ssh version 2           ->Habilitando o protocolo SSH na versão2
+TISW-ACME-BRUNO(config)#ip ssh time-out 60				   -> Estou definindo um tempo para fechar a sessão caso o usuário fique sem utilizar a conexão
+TISW-ACME-BRUNO(config)#ip ssh authentication-retries 2			   ->Numero máximo de re-tentativas de acesso que no caso e "2"
+TISW-ACME-BRUNO(config)#username yoda privilege 15 secret c3po             -> cria um usuário “yoda” com  privilégio “15” e senha secret “c3po”, você pode criar diversos usuários com outros privilégios
+TISW-ACME-BRUNO(config)#username luke privilege 1 secret r2d2		   -> cria um usuário “luke” com  privilégio “1” e senha secret “r2d2”, você pode criar diversos usuários com outros privilégios
+TISW-ACME-BRUNO(config)#line vty 0 15
+TISW-ACME-BRUNO(config)#login local
+TISW-ACME-BRUNO(config)#transport input ssh				   -> Acesso a telnet passa a ser via ssh
+TISW-ACME-BRUNO(config)#
+
+
+
+
+------------------------------------------------------------------
+Como resetar um Switch
+
+TISW-ACME-BRUNO# erase startup-config 
+TISW-ACME-BRUNO#reload 
+System configuration has been modified. Save? [yes/no]:no
+Proceed with reload? [confirm]
+

@@ -1,0 +1,81 @@
+enable
+configure terminal
+hostname SW-Marketing
+banner motd $ ACESSO RESTRITO
+--------------------------
+Acesso autorizado somente para o dept°. TI !!!!
+--------------------------$
+line console 0
+password mortadela1
+login
+exit
+line vty 0 4
+password mortadela1
+login
+exit
+service password-encryption
+enable secret mortadela1
+SW-Marketing#copy running-config startup-config		       Salvar as configurações para que fique na NVRAM, ou seja, que quando desligar o switch não seja apagado da memoria as configurações
+								Caso a gente não faça isso, as configurações ficaram na memoria Ram e será perdido as configurações ao desligar o mesmo
+Destination filename [startup-config]?                         Aperta enter para confirmar
+interface vlan 1
+description Interface de Gerenciamento
+ip address 192.168.0.2 255.255.255.240
+no shutdown
+exit
+SW-Marketing(config)#ip default-gateway 192.168.0.1
+exit
+copy running-config startup-config	
+Destination filename [startup-config]?                         Aperta enter para confirmar
+
+------------------------------------------------------------------------------------------------
+Para realizar o teste e ir em qualquer computador
+Ir na aba desktop -> Command Prompt
+
+1° Teste:
+Verificando se meu computador encontra o Switch
+ping 192.168.0.2
+
+Resultado:
+Request timed out.
+Reply from 192.168.0.2: bytes=32 time<1ms TTL=255
+Reply from 192.168.0.2: bytes=32 time<1ms TTL=255
+Reply from 192.168.0.2: bytes=32 time<1ms TTL=255
+
+Ping statistics for 192.168.0.2:
+    Packets: Sent = 4, Received = 3, Lost = 1 (25% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms
+
+2° Teste utilizando o protocolo telnet:
+telnet 192.168.0.2
+
+Trying 192.168.0.2 ...Open ACESSO RESTRITO
+--------------------------
+Acesso autorizado somente para o dept. TI !!!!
+--------------------------
+
+
+User Access Verification
+
+Password: 						Solicita a senha
+
+Resultado: Conseguir acessar remotamente o switch via protocolo telnet atraves do computador
+
+
+
+
+-------------------------------------------------------------------------------------------------
+Ip Padrão da Rede: 192.168.0.0
+Ip do Servidor: 192.168.0.1 , o ip também será o gateway da minha rede
+Ip da Switch: 192.168.0.2 para fazer o acesso remoto
+Mascara d rede do Servidor: 255.255.255.240
+
+Os ips dos Desktops vão de 192.168.0.0 até 192.168.0.255
+Obs: 192.168.0.0 não pode ser utilizado por ninguem porque e ip da rede
+     192.168.0.1 já e o ip do servidor DHCP
+     192.168.0.2 será o ip da Switch que iremos  disponibilizar para os desktops para acessar remotamente
+     192.168.0.255 não pode ser usado porque e o ip de broadcast
+No total um ip de classe C permite 256 ip, mas no caso só será possivel usar 
+12 ips para distribuir nos desktops nessa rede.Devido o range de endereços ser de 
+192.168.0.3 a 192.168.0.14 que a faixa de ip de distribuição dinamica

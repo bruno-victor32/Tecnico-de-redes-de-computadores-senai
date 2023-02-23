@@ -1,0 +1,84 @@
+ROUTER R1
+========================
+
+configure terminal
+hostname R1-Andrey-Stos
+service password-encryption
+enable secret class
+banner motd @
+================================
+======= Router 01 = Etapa 2 ====
+Access Denied! Only JEDI´s !!!
+Resp. Tecnico: Andrey
+================================@
+
+line vty 0 15
+password cisco
+login
+
+line aux 0
+password cisco
+login
+
+line con 0
+password cisco
+login
+
+interface Fa0/0
+ip address 192.168.10.1 255.255.255.192
+no shutdown
+
+interface Se0/0/0
+ip address 192.168.10.129 255.255.255.252
+clock rate 64000
+no shutdown
+
+router rip
+version 2
+network 192.168.10.0
+network 192.168.10.128
+
+end
+wr
+
+ROUTER R2
+========================
+
+configure terminal
+hostname R2-Andrey
+service password-encryption
+enable secret class
+banner motd @
+================================
+======= Router 02 = Etapa 2 ====
+Access Denied! Only JEDI´s !!!
+Resp. Tecnico: Andrey
+================================@
+
+line vty 0 15
+password cisco
+login
+
+line aux 0
+password cisco
+login
+
+line con 0
+password cisco
+login
+
+interface Fa0/0
+ip address 192.168.10.65 255.255.255.224
+no shutdown
+
+interface Se0/0/1
+ip address 192.168.10.130 255.255.255.252
+no shutdown
+
+router rip
+version 2
+network 192.168.10.64
+network 192.168.10.128
+
+end
+wr
