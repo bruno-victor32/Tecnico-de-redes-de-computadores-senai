@@ -1,0 +1,3 @@
+Em nossa prmeira atividade você deve pesquisar no material didático, nas RFCs e documentações dos fabricantes de equipamentos de rede, as vantagens e desvantagens identificadas no uso do Protocolo OSPF. 
+
+Após realizar a pesquisa, você de listá-las em um documento de texto e publicar essa lista neste espaço. Esta atividade deve ser realizada individualmente.

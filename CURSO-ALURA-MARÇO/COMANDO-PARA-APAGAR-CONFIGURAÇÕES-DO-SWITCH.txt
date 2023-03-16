@@ -1,0 +1,12 @@
+Apagar configuração Switch
+-----------------------------
+
+delete vlan-dat
+erase startup-config
+reload
+
+Apagar configuração do roteador
+-----------------------------
+
+erase startup-config
+reload

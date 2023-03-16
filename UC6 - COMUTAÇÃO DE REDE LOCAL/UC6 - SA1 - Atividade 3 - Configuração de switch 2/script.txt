@@ -1,11 +1,11 @@
 Switch> enable	
 Switch# configure terminal
+Switch(config)# hostname TISW-ACME
 TISW-ACME-BRUNO(config)# banner motd @
 ##############################
 ######## TISW-ACME !!!!!!! #######
 Access Denied! Only Depto. TI !!!!!
 ############################## @
-Switch(config)# hostname TISW-ACME-BRUNO
 TISW-ACME-BRUNO(config)# line console 0
 TISW-ACME-BRUNO(config-line)# password  class
 TISW-ACME-BRUNO(config-line)# login
