@@ -1,0 +1,12 @@
+# Apagar configuração do Router
+erase startup-config
+confirm
+reload
+confirm
+
+# Apagar Configuração das Chaves
+configure terminal
+crypto key zeroize rsa
+yes
+end
+wr

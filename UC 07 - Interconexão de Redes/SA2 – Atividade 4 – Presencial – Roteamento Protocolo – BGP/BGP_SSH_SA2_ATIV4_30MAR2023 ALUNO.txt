@@ -1,0 +1,55 @@
+ROUTER RJ
+============================
+
+configure terminal
+hostname ROUTER_RJ_ALUNO
+service password-encryption
+enable secret cisco
+banner motd @
+====================================
+======== ROUTER_RJ_ALUNO ==========
+= Unauthorized People Access is ====
+= Prohibited, Only Jedi´s Permited =
+====================================@ 
+
+ip domain-name sala213.net
+crypto key generate rsa
+2048
+
+ip ssh version 2
+
+ip ssh time-out 60
+ip ssh authentication-retries 2
+
+username yoda privilege 15 secret c3po
+username luke privilege 1 secret r2d2
+
+line vty 0 15
+login local
+transport input ssh
+
+exit
+
+line con 0
+login local
+
+exit
+
+line aux 0
+login local
+
+interface Gig0/1
+ip address 10.244.243.58 255.255.255.248
+no shutdown
+
+interface Se0/0/0
+ip address 98.99.100.5 255.255.255.252
+no shutdown
+
+router bgp 200
+network 10.244.243.56 mask 255.255.255.248
+network 98.99.100.4 mask 255.255.255.252
+neighbor 98.99.100.6 remote-as 100
+
+end
+wr

@@ -1,0 +1,46 @@
+ROUTER-SP
+===========================
+
+configure terminal
+hostname Roteador-SP_Aluno1_Aluno2
+service password-encryption
+enable secret class
+banner motd @
+=====================================
+====== Roteador-SP_Aluno1_Aluno2 ========
+Access Denied, Only JEDI´s !
+=====================================@
+
+line vty 0 15 
+password cisco
+login
+
+line con 0
+password cisco
+login
+
+line aux 0 
+password cisco
+login
+
+interface Gig0/0
+ip address 10.213.213.154 255.255.255.248
+no shutdown
+
+interface Se0/0/1
+ip address 213.213.213.214 255.255.255.252
+no shutdown
+
+interface Se0/0/0
+ip address 213.213.213.245 255.255.255.252
+no shutdown
+
+router eigrp 23323
+network 10.213.213.152
+network 213.213.213.212
+network 213.213.213.244
+no auto-summary
+
+end
+wr
+

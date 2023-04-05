@@ -1,0 +1,120 @@
+ROUTER-RJ
+===========================
+
+configure terminal
+hostname Roteador-RJ_Aluno&Aluno
+service password-encryption
+enable secret class
+banner motd @
+================================
+====== Roteador-RJ_Aluno&Aluno =====
+Access Denied, Only JEDI´s !
+================================@
+
+line vty 0 15 
+password cisco
+login
+
+line con 0
+password cisco
+login
+
+line aux 0 
+password cisco
+login
+
+interface Gig0/0
+ip address 192.168.255.66 255.255.255.224
+no shutdown
+
+interface Se0/0/1
+ip address 189.190.191.193 255.255.255.252
+no shutdown
+
+router ospf 1
+network 192.168.255.64 0.0.0.31 area 1
+network 189.190.191.192 0.0.0.3 area 0
+
+end
+wr
+
+ROUTER-RJ
+===========================
+
+configure terminal
+hostname Roteador-RJ_Aluno&Aluno
+service password-encryption
+enable secret class
+banner motd @
+================================
+====== Roteador-RJ_Aluno&Aluno =====
+Access Denied, Only JEDI´s !
+================================@
+
+line vty 0 15 
+password cisco
+login
+
+line con 0
+password cisco
+login
+
+line aux 0 
+password cisco
+login
+
+interface Gig0/0
+ip address 192.168.255.66 255.255.255.224
+no shutdown
+
+interface Se0/0/1
+ip address 189.190.191.193 255.255.255.252
+no shutdown
+
+router ospf 1
+network 192.168.255.64 0.0.0.31 area 1
+network 189.190.191.192 0.0.0.3 area 0
+
+end
+wr
+
+ROUTER-RJ
+===========================
+
+configure terminal
+hostname Roteador-RJ_Aluno&Aluno
+service password-encryption
+enable secret class
+banner motd @
+================================
+====== Roteador-RJ_Aluno&Aluno =====
+Access Denied, Only JEDI´s !
+================================@
+
+line vty 0 15 
+password cisco
+login
+
+line con 0
+password cisco
+login
+
+line aux 0 
+password cisco
+login
+
+interface Gig0/0
+ip address 192.168.255.66 255.255.255.224
+no shutdown
+
+interface Se0/0/1
+ip address 189.190.191.193 255.255.255.252
+no shutdown
+
+router ospf 1
+network 192.168.255.64 0.0.0.31 area 1
+network 189.190.191.192 0.0.0.3 area 0
+
+end
+wr
+

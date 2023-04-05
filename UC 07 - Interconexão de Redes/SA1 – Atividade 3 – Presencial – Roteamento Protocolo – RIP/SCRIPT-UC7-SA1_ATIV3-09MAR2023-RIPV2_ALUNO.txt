@@ -1,0 +1,42 @@
+ROUTER-RJ
+===========================
+
+configure terminal
+hostname Roteador-RJ
+service password-encryption
+enable secret class
+banner motd @
+===========================
+====== Roteador-RJ ========
+Access Denied, Only JEDI´s !
+===========================@
+
+line vty 0 15 
+password cisco
+login
+
+line con 0
+password cisco
+login
+
+line aux 0 
+password cisco
+login
+
+interface Gig0/0
+ip address 172.16.10.1 255.255.255.0
+no shutdown
+
+interface Se0/3/0
+ip address 172.16.100.1 255.255.255.0
+clock rate 64000
+no shutdown
+
+router rip 
+version 2
+no auto-summary
+network 172.16.10.0
+network 172.16.100.0
+
+end
+wr
